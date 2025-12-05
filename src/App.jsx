@@ -53,6 +53,7 @@ const firebaseConfig = typeof __firebase_config !== 'undefined'
       measurementId: "G-BCMZ2MYZT1"
     };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
@@ -357,7 +358,7 @@ export default function BangladeshMythsApp() {
     const batch = writeBatch(db);
     const collectionRef = collection(db, 'artifacts', appId, 'public', 'data', 'myths');
     
-    // প্রথম ২০টা মিথ আপলোড করি যাতে কোটা লিমিট ক্রস না করে
+    // প্রথম ৩০টা মিথ আপলোড করি যাতে কোটা লিমিট ক্রস না করে
     INITIAL_MYTHS.slice(0, 30).forEach(myth => {
       const docRef = doc(collectionRef); // নতুন আইডি জেনারেট
       batch.set(docRef, myth);
